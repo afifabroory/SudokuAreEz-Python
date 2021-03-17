@@ -1,0 +1,6 @@
+for args in "$@"
+do
+  python3 sudoku2dimacs.py "$args"
+  python3 testing.py "$args"
+  ./MiniSat dimacs.cnf solustion.cnf
+done  
