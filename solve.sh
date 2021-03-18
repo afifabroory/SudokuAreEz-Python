@@ -7,10 +7,9 @@ then
     if [[ -e "$arg" ]] 
     then
       echo 
-      python3 sudoku2dimacs.py "$arg"
-      python3 testing.py "$arg"
-      ./MiniSat dimacs.cnf solution.cnf
-      python3 show_solution.py
+      python3 core/sudoku2dimacs.py "$arg"
+      ./core/tools/MiniSat sudoku/dimacs.cnf sudoku/solution.cnf
+      python3 core/show_solution.py
     else 
       printf "\033[0;31m$arg are 'ghaib' (not exists)\033[0m\n"
       echo "Please input correct file!"

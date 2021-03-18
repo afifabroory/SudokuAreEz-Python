@@ -1,17 +1,18 @@
 from math import ceil
+from pathlib import Path
 
 def literal(row,col,val,n):
     return str((col*n)-(n-int(val)) + (n*(row-1)*n))
 
 def main():
-  SAT = open('solution.cnf')
+  SAT = open(Path('sudoku/solution.cnf'))
   sudokuSAT = SAT.read().split()
   SAT.close()
    
   ROW_COLUMN = ceil((len(sudokuSAT))**(1/3))-1 # Calculate size N of ROW/COLUMN
   
   if sudokuSAT[0] == 'SAT':
-    print("\nSOLUTION")
+    print('\n~ SOLUTION ~')
     row = 1
     col = 0
     output = ''
