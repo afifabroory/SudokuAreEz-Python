@@ -4,9 +4,9 @@
 Project ini, merupakan sarana untuk menerapakan ilmu yang telah diperoleh **(Learning Purpose)**.
 
 # Note To Reader
-**Disaranakan** untuk menonaktifkan dark mode, ketika membaca [Project Notes.md](#project-notes)
+**Disaranakan** untuk menonaktifkan dark mode, ketika membaca [Project Notes](#project-notes)
 
-Mohon maaf, jika pada bagian [Project Notes.md](#project-notes.) tidak menggunakan bahasa baku atau tidak se-utuhnya menggunakan bahasa Indonesia yang baik dan benar, dan tidak menjelaskan istilah-istilah Matematika serta jika terdapat kesalahan atau kekurangan dalam penjelasan.
+Mohon maaf, jika pada bagian [Project Notes](#project-notes.) tidak menggunakan bahasa baku atau tidak se-utuhnya menggunakan bahasa Indonesia yang baik dan benar, dan tidak menjelaskan istilah-istilah Matematika serta jika terdapat kesalahan atau kekurangan dalam penjelasan.
 
 # Project Notes
 Pada bagian project notes ini merupakan bagian penjelasan dari project ini, berupa penjelasan pendekatan teori dan pendekatan praktis.
@@ -16,7 +16,7 @@ Pada bagian project notes ini merupakan bagian penjelasan dari project ini, beru
 Logika Matematika adalah ilmu berfikir atau penalaran untuk menyimpulkan dan verifikasi dari sebuah statement.
 
 ***Contoh 1.1:*** \
-Perhatikan statement matematika berikut, ![equation](https://latex.codecogs.com/gif.latex?\bg_white&space;\dpi{100}&space;\small&space;\forall&space;n,&space;n\in\mathbb{N}:\left[&space;P(n)&space;=&space;1&space;&plus;&space;2&space;&plus;&space;...&space;&plus;&space;n&space;=&space;\frac{n\left(n&space;&plus;&space;1\right)}{2}\right]) dimana ℕ adalah bilang asli (1, 2, 3, ... [Silahkan buka [_Discussions_](https://github.com/afifabroory/SudokuAreEz/discussions) baru di project ini untuk list lengkap bilangan bulat]).Statement tersebut adalah statement True.
+Perhatikan statement matematika berikut, ![equation](https://latex.codecogs.com/gif.latex?\bg_white&space;\dpi{100}&space;\small&space;\forall&space;n,&space;n\in\mathbb{N}:\left[&space;P(n)&space;=&space;1&space;&plus;&space;2&space;&plus;&space;...&space;&plus;&space;n&space;=&space;\frac{n\left(n&space;&plus;&space;1\right)}{2}\right]) dimana ℕ adalah bilang asli (1, 2, 3, ... [Silahkan buka [_Discussions_](https://github.com/afifabroory/SudokuAreEz-SAT/discussions) baru di project ini untuk list lengkap bilangan bulat]).Statement tersebut adalah statement True.
 
 Proof:\
 (1) Statement True untuk n = 1, P(1) \
