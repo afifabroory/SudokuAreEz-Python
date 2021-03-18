@@ -3,7 +3,7 @@ import sudoku
 from pathlib import Path
 
 def calculateClause(nCell):
-    return int(nCell*nCell + (nCell*nCell * (nCell * (nCell - 1)/2)) * 3)
+    return int((nCell*nCell + nCell*nCell * (nCell*(nCell-1)/2)) * 4)
 
 def main(sudokuProblem):
   
