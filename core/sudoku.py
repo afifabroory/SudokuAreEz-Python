@@ -5,13 +5,13 @@ def literal(row, col, val, n):
 
 def toCNF(dimacs, preAssigned, nCell):
   
-  # This this function implement Minimal Encoding.
-  # Pre-assigned entry
+  # This function implement Minimal Encoding.
+  # Pre-assigned Entry/Cell
   for e in preAssigned:
     x, y, z = e
     dimacs.write(f'{literal(x,y,z,nCell)} 0\n')
 
-  # Definidness Entry
+  # Definedness Entry/Cell
   for x in range(1, nCell+1):
     for y in range(1, nCell+1):
        for z in range(1, nCell+1):
@@ -56,3 +56,38 @@ def toCNF(dimacs, preAssigned, nCell):
                 clause_1 = literal(floor(sqrt(nCell))*i+x,floor(sqrt(nCell))*j+y,z,nCell)
                 clause_2 = literal(floor(sqrt(nCell))*i+k,floor(sqrt(nCell))*j+l,z,nCell)
                 dimacs.write(f'-{clause_1} -{clause_2} 0\n')
+
+  # Implement Extended Encoding
+  # Uniqueness Entry
+  for x in range(1, nCell+1):
+    for y in range(1,nCell+1):
+      for z in range(1,nCell):
+        for i in range(z+1,nCell+1):
+          clause_1 = literal(x,y,z,nCell)
+          clause_2 = literal(x,y,i,nCell)
+          dimacs.write(f"-{clause_1} -{clause_2} 0\n")
+  
+  # Definedness Row
+  for x in range(1,nCell+1):
+    for v in range(1, nCell+1):
+      for y in range(1,nCell+1):
+        dimacs.write(f"{literal(x,y,v,nCell)} ")
+      dimacs.write("0\n")
+         
+  # Definedness Column
+  for y in range(1,nCell+1):
+    for v in range(1,nCell+1):
+      for x in range(1,nCell+1):
+        dimacs.write(f'{literal(x,y,v,nCell)} ')
+      dimacs.write("0\n")
+         
+  # Definedness Block
+  for i in range(floor(sqrt(nCell))):
+    for j in range(floor(sqrt(nCell))):
+      for v in range(1,nCell+1):
+        for x in range(1,floor(sqrt(nCell))+1):
+          for y in range(1,floor(sqrt(nCell))+1):
+            clause = literal(i*floor(sqrt(nCell))+x,j*floor(sqrt(nCell))+y,v,nCell)
+            dimacs.write(f'{clause} ')
+        dimacs.write('0\n')
+            

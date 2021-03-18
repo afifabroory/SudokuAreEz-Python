@@ -13,7 +13,7 @@ then
     else 
       printf "\033[0;31m$arg are 'ghaib' (not exists)\033[0m\n"
       echo "Please input correct file!"
-      echo "Example: ./Solve.sh <file_1> <file_2> ... <file_n>"
+      echo "Example: ./solve.sh <file_1> <file_2> ... <file_n>"
       exit 1
     fi
 
