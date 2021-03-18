@@ -1,5 +1,5 @@
 # About
-**SudokuAreEz** adalah project yang mengaplikasikan _Satisfiability_ dalam _Propositional Logic_ (Matematika Diskrit) untuk menyelesaikan permainan [Sudoku](https://en.wikipedia.org/wiki/Sudoku) dengan bantuan komputer (Computer Aided).
+**SudokuAreEz-SAT** adalah project yang mengaplikasikan _Satisfiability_ dalam _Propositional Logic_ (Matematika Diskrit) untuk menyelesaikan permainan [Sudoku](https://en.wikipedia.org/wiki/Sudoku) dengan bantuan komputer.
 
 Project ini, merupakan sarana untuk menerapakan ilmu yang telah diperoleh **(Learning Purpose)**.
 
