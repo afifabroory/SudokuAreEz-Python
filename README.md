@@ -9,10 +9,6 @@ Project ini, merupakan sarana untuk menerapakan ilmu yang telah diperoleh **(Lea
 Mohon maaf, jika pada bagian [Project Notes](#project-notes.) tidak menggunakan bahasa baku atau tidak se-utuhnya menggunakan bahasa Indonesia yang baik dan benar, dan tidak menjelaskan istilah-istilah Matematika serta jika terdapat kesalahan atau kekurangan dalam penjelasan.
 
 # Project Notes
-Pada bagian project notes ini merupakan bagian penjelasan dari project ini, berupa penjelasan pendekatan teori dan pendekatan praktis.
-
----
-
 Logika Matematika adalah ilmu berfikir atau penalaran untuk menyimpulkan dan verifikasi dari sebuah statement.
 
 ***Contoh 1.1:*** \
@@ -115,3 +111,15 @@ Bentuk akhirnya adalah `¬p ∨ ¬r` yang mana merupakan bentuk CNF dan DNF.
 
 > **Note:** Selalu lihat referensi, logical equivalent rule ketika konversi ke CNF!
 
+Tools: \
+Project ini mengunakan SAT Solver [MiniSAT](minisat.se) untuk menyelesaikan Satisfiability Problem 
+
+Sudoku Database: \
+https://www.menneske.no/sudoku/eng/ 
+
+Project Reference: \
+https://cse.buffalo.edu/~erdem/cse331/support/sat-solver/index.html \
+http://swtv.kaist.ac.kr/courses/cs453-fall12/sudoku.pdf \
+https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/index-seo.php/SATLINK____DIMACS \
+http://www.cs.cmu.edu/~hjain/papers/sudoku-as-SAT.pdf \
+https://www.andrew.cmu.edu/user/vipuls/me/SudokuSATProjectReport.pdf 
