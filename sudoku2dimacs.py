@@ -2,129 +2,64 @@ import sys
 from math import sqrt, floor
 
 def calculateClause(nCell):
-    # Cell
-    CellD = nCell*nCell
-    CellSum = 0
-    for i in range(1, nCell):
-      CellSum += nCell - i
-    CellU = nCell*nCell*CellSum
-    print(f"CellU = {CellU}")
-
-    # Row
-    RowD = nCell*nCell
-    RowSum = 0
-    for i in range(1, nCell):
-      RowSum += nCell - i
-    RowU = nCell*nCell * RowSum
-    print(f"RowU = {RowU}")
-
-    # Column
-    ColD = nCell*nCell
-    ColSum = 0
-    for i in range(1, nCell):
-      ColSum += nCell - i
-    ColU = nCell*nCell * ColSum
-    print(f"ColU = {ColU}")
-
-    # Block
-    BlockD = sqrt(nCell)*sqrt(nCell)*nCell
-    BlockSum = 0
-    for i in range(1, nCell+1):
-      BlockSum += nCell - i
-    BlockU = int(sqrt(nCell)*sqrt(nCell))*nCell * BlockSum
-    print(f"BlockU = {BlockU}")
-
-    return int(CellD + CellU + RowD + RowU + ColD + ColU + BlockD + BlockU)
+    return nCell*nCell + (nCell*nCell * (nCell * (nCell - 1)/2)) * 3
 
 def literal(row, col, val, n):
-  return int(row*n**2 - n**2 + col*n + int(val) - n)
+  return ((col*n)-(n-int(val))) + (n*(row-1)*n)
 
 def toCNF(dimacs, preAssigned, nCell):
   
+  # This this function implement Minimal Encoding.
   # Pre-assigned entry
-  for e in preAssigned: # Conjunction
-    r, c, v = e
-    dimacs.write(f"{literal(r,c,v,nCell)} 0\n")
+  for e in preAssigned:
+    x, y, z = e
+    dimacs.write(f"{literal(x,y,z,nCell)} 0\n")
 
   # Definidness Entry
-  for r in range(1, nCell+1): # Conjunction
-    for c in range(1, nCell+1):
-       for v in range(1, nCell+1): # Disjunction
-         dimacs.write(f"{literal(r,c,v,nCell)} ")
+  for x in range(1, nCell+1):
+    for y in range(1, nCell+1):
+       for z in range(1, nCell+1):
+         dimacs.write(f"{literal(x,y,z,nCell)} ")
        dimacs.write("0\n")
 
-  # Uniqueness Entry
-  for r in range(1, nCell+1): # Conjunction
-    for c in range(1, nCell+1):
-      for vi in range(1, nCell):
-        for vj in range(vi+1, nCell+1):
-          clause_1 = literal(r,c,vi,nCell)
-          clause_2 = literal(r,c,vj,nCell)
-          dimacs.write(f"-{clause_1} -{clause_2} 0\n")
-
-  # Definidness Row
-  for c in range(1, nCell+1): # Conjunction
-    for v in range(1, nCell+1):
-      for r in range(1, nCell+1): # Disjunction
-        dimacs.write(f"{literal(r,c,v,nCell)} ")
-      dimacs.write("0\n")
-
   # Uniqueness Row
-  for c in range(1, nCell+1): # Conjunction
-    for v in range(1, nCell+1):
-      for ri in range(1, nCell):
-        for rj in range(ri+1, nCell+1):
-          clause_1 = literal(ri,c,v,nCell)
-          clause_2 = literal(rj,c,v,nCell)
+  for y in range(1, nCell+1):
+    for z in range(1, nCell+1):
+      for x in range(1, nCell):
+        for i in range(x+1, nCell+1):
+          clause_1 = literal(x,y,z,nCell)
+          clause_2 = literal(i,y,z,nCell)
           dimacs.write(f"-{clause_1} -{clause_2} 0\n")
 
-  # Definidness Column
-  for r in range(1, nCell+1): # Conjunction
-    for v in range(1, nCell+1):
-      for c in range(1, nCell+1): # Disjunction
-        dimacs.write(f"{literal(r,c,v,nCell)} ")
-      dimacs.write("0\n")
- 
   # Uniqueness Column
-  for r in range(1, nCell+1): # Conjunction
-    for v in range(1, nCell+1):
-      for ci in range(1, nCell):
-        for cj in range(ci+1, nCell+1):
-          clause_1 = literal(r,ci,v,nCell)
-          clause_2 = literal(r,cj,v,nCell)
+  for x in range(1, nCell+1):
+    for z in range(1, nCell+1):
+      for y in range(1, nCell):
+        for i in range(y+1, nCell+1):
+          clause_1 = literal(x,y,z,nCell)
+          clause_2 = literal(x,i,z,nCell)
           dimacs.write(f"-{clause_1} -{clause_2} 0\n")
 
-  # Definidness Block
-  for v in range(1, nCell+1): # Disjunction
-    for i in range(floor(sqrt(nCell))): # Conjunction
-      for j in range(floor(sqrt(nCell))):
-        for r in range(1, floor(sqrt(nCell))+1):
-          for c in range(1, floor(sqrt(nCell))+1):
-            dimacs.write(f"{literal(floor(sqrt(nCell)*i+r),floor(sqrt(nCell))*j+c,v,nCell)} ")
-  dimacs.write("0\n")
-    #dimacs.write("0\n") # THIS IS WIERD!
- 
   # Uniqueness Block
-  for v in range(1, nCell+1): # Conjunction
+  for z in range(1, nCell+1):
     for i in range(floor(sqrt(nCell))):
       for j in range(floor(sqrt(nCell))):
-       for r in range(1, floor(sqrt(nCell))+1):
-        for ci in range(1, floor(sqrt(nCell))+1):
-          for cj in range(ci+1, floor(sqrt(nCell))+1):
-            clause_1 = literal(floor(sqrt(nCell))*i+r,floor(sqrt(nCell))*j+ci,v,nCell)
-            clause_2 = literal(floor(sqrt(nCell))*i+r,floor(sqrt(nCell))*j+cj,v,nCell)
+       for x in range(1, floor(sqrt(nCell))+1):
+        for y in range(1, floor(sqrt(nCell))+1):
+          for k in range(y+1, floor(sqrt(nCell))+1):
+            clause_1 = literal(floor(sqrt(nCell))*i+x,floor(sqrt(nCell))*j+y,z,nCell)
+            clause_2 = literal(floor(sqrt(nCell))*i+x,floor(sqrt(nCell))*j+k,z,nCell)
             dimacs.write(f"-{clause_1} -{clause_2} 0\n")
-  for v in range(1, nCell+1): # Conjunction
+  for z in range(1, nCell+1):
     for i in range(floor(sqrt(nCell))):
       for j in range(floor(sqrt(nCell))):
-        for ri in range(1, floor(sqrt(nCell))+1):
-          for c in range(1, floor(sqrt(nCell))+1):
-            for rj in range(ci+1, floor(sqrt(nCell))+1):
-              for k in range(1, floor(sqrt(nCell))+1):
-                clause_1 = literal(floor(sqrt(nCell))*i+ri,floor(sqrt(nCell))*j+c,v,nCell)
-                clause_2 = literal(floor(sqrt(nCell))*i+rj,floor(sqrt(nCell))*j+k,v,nCell)
+        for x in range(1, floor(sqrt(nCell))+1):
+          for y in range(1, floor(sqrt(nCell))+1):
+            for k in range(x+1, floor(sqrt(nCell))+1):
+              for l in range(1, floor(sqrt(nCell))+1):
+                clause_1 = literal(floor(sqrt(nCell))*i+x,floor(sqrt(nCell))*j+y,z,nCell)
+                clause_2 = literal(floor(sqrt(nCell))*i+k,floor(sqrt(nCell))*j+l,z,nCell)
                 dimacs.write(f"-{clause_1} -{clause_2} 0\n")
-
 
 def main(sudokuProblem, emptyEntry='x'):
   sudoku = open(sudokuProblem)
@@ -135,7 +70,6 @@ def main(sudokuProblem, emptyEntry='x'):
   preAssigned = []
   for line in sudoku:
     tmp = line.split()
-    print(tmp) # DEBUG: splitted char in input file
 
     nCol = 1
     for cell in tmp:
