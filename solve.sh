@@ -6,7 +6,6 @@ then
 
     if [[ -e "$arg" ]] 
     then
-      echo 
       python3 core/sudoku2dimacs.py "$arg"
       ./core/tools/MiniSat sudoku/dimacs.cnf sudoku/solution.cnf
       python3 core/show_solution.py
