@@ -8,6 +8,8 @@ Project ini, merupakan sarana untuk menerapakan ilmu yang telah diperoleh **(Lea
 
 Mohon maaf, jika pada bagian [Project Notes](#project-notes.) tidak menggunakan bahasa baku atau tidak se-utuhnya menggunakan bahasa Indonesia yang baik dan benar, dan tidak menjelaskan istilah-istilah Matematika serta jika terdapat kesalahan atau kekurangan dalam penjelasan.
 
+Any suggestion or question? Create new [Discussion here!](https://github.com/afifabroory/SudokuAreEz-SAT/discussions) 
+
 # Project Notes
 Logika Matematika adalah ilmu berfikir atau penalaran untuk menyimpulkan dan verifikasi dari sebuah statement.
 
@@ -118,6 +120,7 @@ Sudoku Database: \
 https://www.menneske.no/sudoku/eng/ 
 
 Project Reference: \
+http://anytime.cs.umass.edu/aimath06/proceedings/P34.pdf \
 https://cse.buffalo.edu/~erdem/cse331/support/sat-solver/index.html \
 http://swtv.kaist.ac.kr/courses/cs453-fall12/sudoku.pdf \
 https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/index-seo.php/SATLINK____DIMACS \
