@@ -126,3 +126,4 @@ http://swtv.kaist.ac.kr/courses/cs453-fall12/sudoku.pdf \
 https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/index-seo.php/SATLINK____DIMACS \
 http://www.cs.cmu.edu/~hjain/papers/sudoku-as-SAT.pdf \
 https://www.andrew.cmu.edu/user/vipuls/me/SudokuSATProjectReport.pdf 
+![visitor](https://visitor-badge.glitch.me/badge?page_id=afifabroory.SudokuAreEz)
